@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-DEFAULT_DATA = BASE_DIR / "data" / "risk_classification.csv"
+DEFAULT_DATA = BASE_DIR / "data" / "classificacao_risco.csv"
 
 
 def parse_args() -> argparse.Namespace:
