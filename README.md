@@ -51,7 +51,8 @@ Esta etapa do projeto **CardioIA** foca na construção de um módulo inteligent
 - **Script CLI opcional**: `src/classificador_risco_cli.py` para treinar/avaliar via terminal, exportar métricas (`--report`) ou salvar modelo (`--export-model`).
 
 ### 🎬 Demonstração em Vídeo
-- Link (até 4 minutos, YouTube não listado): `pendente – adicionar após gravação`.
+[![Thumbnail do vídeo de demonstração](https://img.youtube.com/vi/EX8QLK0Jjkw/hqdefault.jpg)](https://youtu.be/EX8QLK0Jjkw "Assistir à demonstração completa")
+- Vídeo não listado no YouTube.
 
 ---
 
