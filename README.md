@@ -34,24 +34,25 @@ Esta etapa do projeto **CardioIA** foca na construção de um módulo inteligent
 ## 📦 Entregáveis
 
 ### 🗣️ Parte 1 — Extração de Sintomas e Diagnóstico Assistido
-- **Relatos de pacientes**: `data/patient_reports.txt`
-- **Mapa de conhecimento (CSV)**: `data/symptom_disease_map.csv` com sinônimos e coluna `severity_level` indicando gravidade estimada.
-- **Script de inferência**: `src/diagnosis.py`
+- **Relatos de pacientes**: `data/relatos_pacientes.txt`
+- **Mapa de conhecimento (CSV)**: `data/mapa_sintomas_doencas.csv` com sinônimos e coluna `severity_level` indicando gravidade estimada.
+- **Script de inferência**: `src/diagnostico.py`
   - Normaliza texto (remoção de acentos), cruza sintomas com o mapa e gera resumo por relato.
   - Calcula a gravidade mais alta detectada (`baixo`, `moderado`, `alto`, `crítico`).
   - Exporta resultados estruturados (`--export caminho.json|csv`).
   - Exibe estatísticas gerais de cobertura e distribuição de gravidade.
 
 ### 📊 Parte 2 — Classificador de Risco com TF-IDF
-- **Base rotulada**: `data/risk_classification.csv`
-- **Notebook**: `notebooks/risk_classifier.ipynb`
+- **Base rotulada**: `data/classificacao_risco.csv`
+- **Notebook**: `notebooks/classificador_risco.ipynb`
   - Pipeline TF-IDF + Regressão Logística (Scikit-learn).
   - Avaliação com acurácia, relatório de classificação e matriz de confusão.
   - Identificação dos principais termos por classe e observações de viés.
-- **Script CLI opcional**: `src/risk_classifier_cli.py` para treinar/avaliar via terminal, exportar métricas (`--report`) ou salvar modelo (`--export-model`).
+- **Script CLI opcional**: `src/classificador_risco_cli.py` para treinar/avaliar via terminal, exportar métricas (`--report`) ou salvar modelo (`--export-model`).
 
 ### 🎬 Demonstração em Vídeo
-- Link (até 4 minutos, YouTube não listado): `pendente – adicionar após gravação`.
+[![Thumbnail do vídeo de demonstração](https://img.youtube.com/vi/EX8QLK0Jjkw/hqdefault.jpg)](https://youtu.be/EX8QLK0Jjkw "Assistir à demonstração completa")
+- Vídeo não listado no YouTube.
 
 ---
 
@@ -69,20 +70,20 @@ Esta etapa do projeto **CardioIA** foca na construção de um módulo inteligent
 ### Parte 1 – Script de Diagnóstico
 ```bash
 pip install -r requirements.txt
-python3 src/diagnosis.py
+python3 src/diagnostico.py
 ```
 - O terminal exibirá sintomas reconhecidos, diagnósticos sugeridos e gravidade máxima por relato.
 - Para exportar o resultado estruturado:
   ```bash
-  python3 src/diagnosis.py --export saida/diagnosticos.json
-  python3 src/diagnosis.py --export saida/diagnosticos.csv --format csv
+  python3 src/diagnostico.py --export saida/diagnosticos.json
+  python3 src/diagnostico.py --export saida/diagnosticos.csv --format csv
   ```
 - É possível usar arquivos personalizados com `--reports` e `--mapping`.
 
 ### Parte 2 – Notebook de Classificação
-1. Abra `notebooks/risk_classifier.ipynb` no Jupyter Lab/Notebook.
+1. Abra `notebooks/classificador_risco.ipynb` no Jupyter Lab/Notebook.
 2. Execute as células na ordem apresentada:
-   - Carregamento da base `risk_classification.csv` e checagem de balanceamento.
+   - Carregamento da base `classificacao_risco.csv` e checagem de balanceamento.
    - Divisão treino/teste e vetorização TF-IDF.
    - Treinamento, métricas quantitativas e inspeção de termos mais relevantes.
    - Predições em novas frases.
@@ -90,7 +91,7 @@ python3 src/diagnosis.py
 
 ### Parte 2 – Execução via CLI (opcional)
 ```bash
-python3 src/risk_classifier_cli.py --report saida/metricas.json --export-model saida/modelo.joblib
+python3 src/classificador_risco_cli.py --report saida/metricas.json --export-model saida/modelo.joblib
 ```
 - Gera métricas no terminal, salva relatório JSON e o pipeline treinado (TF-IDF + Regressão Logística).
 - Parâmetros adicionais: `--test-size` e `--random-state`.
@@ -112,14 +113,14 @@ python3 src/risk_classifier_cli.py --report saida/metricas.json --export-model s
 ├─ assets/
 │   └─ logo-fiap.png
 ├─ data/
-│   ├─ patient_reports.txt
-│   ├─ risk_classification.csv
-│   └─ symptom_disease_map.csv
+│   ├─ relatos_pacientes.txt
+│   ├─ classificacao_risco.csv
+│   └─ mapa_sintomas_doencas.csv
 ├─ notebooks/
-│   └─ risk_classifier.ipynb
+│   └─ classificador_risco.ipynb
 ├─ src/
-│   ├─ diagnosis.py
-│   └─ risk_classifier_cli.py
+│   ├─ diagnostico.py
+│   └─ classificador_risco_cli.py
 ├─ requirements.txt
 └─ README.md
 ```
