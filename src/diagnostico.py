@@ -11,8 +11,8 @@ from pathlib import Path
 from typing import Iterable, List
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-DEFAULT_REPORTS = BASE_DIR / "data" / "patient_reports.txt"
-DEFAULT_MAPPING = BASE_DIR / "data" / "symptom_disease_map.csv"
+DEFAULT_REPORTS = BASE_DIR / "data" / "relatos_pacientes.txt"
+DEFAULT_MAPPING = BASE_DIR / "data" / "mapa_sintomas_doencas.csv"
 DEFAULT_SEVERITY = "moderado"
 SEVERITY_ORDER = {
     "baixo": 0,
